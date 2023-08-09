@@ -2,7 +2,10 @@ package team.isaz.existence.core.rules;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
+import org.mockito.Mockito;
 import team.isaz.existence.core.model.interfaces.AbsenceRule;
+import team.isaz.existence.core.model.interfaces.ExistenceChecker;
 import team.isaz.existence.core.model.rules.OptionalAbsenceRule;
 
 import java.util.Optional;
@@ -25,11 +28,23 @@ public class OptionalAbsenceRuleTest {
     }
 
     @Test
-    public void absent_whenOptionalIsPresent_thenReturnFalse() {
+    public void absent_whenOptionalIsPresentAndItsValueIsExists_thenReturnFalse() {
+        ExistenceChecker mock = Mockito.mock(ExistenceChecker.class);
+        Mockito.when(mock.absent(ArgumentMatchers.any())).thenReturn(false);
         Optional<Integer> o = Optional.of(1);
         Assertions
-                .assertThat(rule.absent(o, null))
+                .assertThat(rule.absent(o, mock))
                 .isFalse();
+    }
+
+    @Test
+    public void absent_whenOptionalIsPresentAndItsValueIsAbsent_thenReturnTrue() {
+        ExistenceChecker mock = Mockito.mock(ExistenceChecker.class);
+        Mockito.when(mock.absent(ArgumentMatchers.any())).thenReturn(true);
+        Optional<Integer> o = Optional.of(1);
+        Assertions
+                .assertThat(rule.absent(o, mock))
+                .isTrue();
     }
 
     @Test

@@ -11,6 +11,11 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.stream.Collectors;
 
+/**
+ * <h2>BasicExistenceChecker</h2>
+ * <p>Basic implementation of ExistenceChecker</p>
+ * <p>Mutable, in control methods returns itself to create a fluent api</p>
+ */
 public class BasicExistenceChecker implements ExistenceChecker {
 
     private final Queue<AbsenceRule> rules;

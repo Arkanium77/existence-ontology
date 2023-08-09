@@ -13,6 +13,12 @@ public class OptionalAbsenceRule implements AbsenceRule {
 
     @Override
     public boolean absent(Object o, ExistenceChecker checker) {
-        return !((Optional<?>) o).isPresent();
+        Optional<?> optional = ((Optional<?>) o);
+        //noinspection OptionalIsPresent
+        if (!optional.isPresent()) {
+            return true;
+        }
+
+        return checker.absent(optional.get());
     }
 }

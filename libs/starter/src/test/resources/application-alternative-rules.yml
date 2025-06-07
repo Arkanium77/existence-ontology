@@ -1,0 +1,9 @@
+existence-ontology:
+  rules:
+    - nullAbsenceRule
+    - collectionAbsenceRule
+    - emptiableAbsenceRule
+    - mapAbsenceRule
+    - optionalAbsenceRule
+    #- stringAbsenceRule
+    - noTrimStringAbsenceRule # check string existence without trimming

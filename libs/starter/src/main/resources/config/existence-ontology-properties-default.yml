@@ -1,0 +1,10 @@
+existence-ontology:
+  strategy: anyExistsAbsenceInterpretationStrategy
+  rules:
+    - nullAbsenceRule
+    - collectionAbsenceRule
+    - emptiableAbsenceRule
+    - mapAbsenceRule
+    - optionalAbsenceRule
+    - stringAbsenceRule
+    #- noTrimStringAbsenceRule # check string existence without trimming

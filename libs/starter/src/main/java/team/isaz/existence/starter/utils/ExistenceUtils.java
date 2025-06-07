@@ -1,15 +1,10 @@
-package team.isaz.existence.core.model.interfaces;
+package team.isaz.existence.starter.utils;
 
-/**
- * <h2>ExistenceChecker</h2>
- * <p>
- * This interface defines a contract for classes that implement the existence checking functionality.
- * </p>
- * <p>
- * The interface consists methods for checking different existence/absence conditions
- * </p>
- */
-public interface ExistenceChecker {
+import lombok.experimental.UtilityClass;
+import team.isaz.existence.starter.config.StaticBeans;
+
+@UtilityClass
+public class ExistenceUtils {
 
     /**
      * Check if the object is absent
@@ -17,7 +12,9 @@ public interface ExistenceChecker {
      * @param o {@link Object} for check
      * @return {@code true} if object is 'absent' (null, empty, e.t.c.) and {@code false} otherwise
      */
-    boolean absent(Object o);
+    public static boolean absent(Object o){
+        return StaticBeans.existenceChecker().absent(o);
+    }
 
     /**
      * Check if any of the objects is absent
@@ -25,13 +22,8 @@ public interface ExistenceChecker {
      * @param os Multiple {@link Object} for check
      * @return {@code true} if at least one of objects is 'absent' (null, empty, e.t.c.) and {@code false} otherwise
      */
-    default boolean anyAbsent(Object... os) {
-        for (Object o : os) {
-            if (absent(o)) {
-                return true;
-            }
-        }
-        return false;
+    public static boolean anyAbsent(Object... os) {
+        return StaticBeans.existenceChecker().anyAbsent(os);
     }
 
     /**
@@ -40,13 +32,8 @@ public interface ExistenceChecker {
      * @param os Multiple {@link Object} for check
      * @return {@code true} if all objects is 'absent' (null, empty, e.t.c.) and {@code false} otherwise
      */
-    default boolean allAbsent(Object... os) {
-        for (Object o : os) {
-            if (!absent(o)) {
-                return false;
-            }
-        }
-        return true;
+    public static boolean allAbsent(Object... os) {
+        return StaticBeans.existenceChecker().allAbsent(os);
     }
 
     /**
@@ -55,7 +42,7 @@ public interface ExistenceChecker {
      * @param o {@link Object} for check
      * @return {@code true} if an object is 'exists' (not null, not empty, e.t.c.) and {@code false} otherwise
      */
-    default boolean exists(Object o) {
+    public static boolean exists(Object o) {
         return !absent(o);
     }
 
@@ -65,7 +52,7 @@ public interface ExistenceChecker {
      * @param os Multiple {@link Object} for check
      * @return {@code true} if at least one of objects is 'exists' (not null, not empty, e.t.c.) and {@code false} otherwise
      */
-    default boolean anyExists(Object... os) {
+    public static boolean anyExists(Object... os) {
         return !allAbsent(os);
     }
 
@@ -75,7 +62,7 @@ public interface ExistenceChecker {
      * @param os Multiple {@link Object} for check
      * @return {@code true} if all objects is 'exists' (not null, not empty, e.t.c.) and {@code false} otherwise
      */
-    default boolean allExists(Object... os) {
+    public static boolean allExists(Object... os) {
         return !anyAbsent(os);
     }
 }

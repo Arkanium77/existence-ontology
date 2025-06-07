@@ -1,7 +1,7 @@
 package team.isaz.existence.core.model.interfaces;
 
 import team.isaz.existence.core.model.rules.CollectionAbsenceRule;
-import team.isaz.existence.core.model.rules.EmptyableAbsenceRule;
+import team.isaz.existence.core.model.rules.EmptiableAbsenceRule;
 import team.isaz.existence.core.model.rules.NoTrimStringAbsenceRule;
 import team.isaz.existence.core.model.rules.OptionalAbsenceRule;
 import team.isaz.existence.core.model.rules.StringAbsenceRule;
@@ -15,7 +15,7 @@ import team.isaz.existence.core.model.rules.StringAbsenceRule;
  * It will be helpful to check out the implementations:
  *     <ul>
  *         <li>
- *             {@link EmptyableAbsenceRule} and {@link OptionalAbsenceRule} - the simplest rules:
+ *             {@link EmptiableAbsenceRule} and {@link OptionalAbsenceRule} - the simplest rules:
  *             An object is empty if it tells us that it is empty
  *         </li>
  *         <li>
@@ -51,8 +51,8 @@ public interface AbsenceRule {
      * <p>Checking that incoming object is absent</p>
      * <p>
      * Absence checking can rely on a wide variety of criteria. The simplest way is not to implement a rule,
-     * but to implement the {@link Emptyable} interface and use an existing class
-     * {@link EmptyableAbsenceRule EmptyableAbsenceRule}.
+     * but to implement the {@link Emptiable} interface and use an existing class
+     * {@link EmptiableAbsenceRule EmptiableAbsenceRule}.
      * </p>
      * <p>
      * However, in case you cannot implement the interface - you must implement your own rule and describe

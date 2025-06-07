@@ -2,6 +2,7 @@ plugins {
     java
     `maven-publish`
     signing
+    id("io.spring.dependency-management") version "1.1.4"
 }
 
 group = "team.isaz.existence"
@@ -25,11 +26,17 @@ tasks.withType<JavaCompile>().configureEach {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
+dependencyManagement {
+    imports {
+        mavenBom("org.junit:junit-bom:5.12.2")
+    }
+}
+
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.12.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("org.assertj:assertj-core:3.27.3")
     testImplementation("org.mockito:mockito-core:5.18.0")

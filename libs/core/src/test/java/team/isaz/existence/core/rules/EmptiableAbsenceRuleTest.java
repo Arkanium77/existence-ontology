@@ -3,23 +3,25 @@ package team.isaz.existence.core.rules;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import team.isaz.existence.core.model.interfaces.AbsenceRule;
-import team.isaz.existence.core.model.interfaces.Emptyable;
-import team.isaz.existence.core.model.rules.EmptyableAbsenceRule;
+import org.junit.jupiter.api.DisplayName;
+import team.isaz.existence.core.model.interfaces.Emptiable;
+import team.isaz.existence.core.model.rules.EmptiableAbsenceRule;
+@DisplayName("Emptiable absence rule")
 
-public class EmptyableAbsenceRuleTest {
-    private final AbsenceRule rule = new EmptyableAbsenceRule();
+public class EmptiableAbsenceRuleTest {
+    private final AbsenceRule rule = new EmptiableAbsenceRule();
 
     @Test
-    public void applicable_whenObjectIsInstanceOfEmptyable_thenReturnTrue() {
+    public void applicable_whenObjectIsInstanceOfEmptiable_thenReturnTrue() {
         Assertions
                 .assertThat(rule.applicable(new TwoIntegerHolder()))
                 .isTrue();
     }
 
     @Test
-    public void applicable_whenObjectIsNotInstanceOfEmptyable_thenReturnFalse() {
+    public void applicable_whenObjectIsNotInstanceOfEmptiable_thenReturnFalse() {
         Assertions
-                .assertThat(rule.applicable("Strings don't implement the Emptyable interface"))
+                .assertThat(rule.applicable("Strings don't implement the Emptiable interface"))
                 .isFalse();
     }
 
@@ -44,7 +46,7 @@ public class EmptyableAbsenceRuleTest {
                 .isTrue();
     }
 
-    private static class TwoIntegerHolder implements Emptyable {
+    private static class TwoIntegerHolder implements Emptiable {
         private final Integer a;
         private final Integer b;
 

@@ -3,12 +3,14 @@ package team.isaz.existence.core.rules;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
+import org.junit.jupiter.api.DisplayName;
 import org.mockito.Mockito;
 import team.isaz.existence.core.model.interfaces.AbsenceRule;
 import team.isaz.existence.core.model.interfaces.ExistenceChecker;
 import team.isaz.existence.core.model.rules.OptionalAbsenceRule;
 
 import java.util.Optional;
+@DisplayName("Optional absence rule")
 
 public class OptionalAbsenceRuleTest {
     private final AbsenceRule rule = new OptionalAbsenceRule();

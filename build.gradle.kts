@@ -1,13 +1,37 @@
+plugins {
+    id("java")
+    id("maven-publish")
+    id("signing")
+    id("io.spring.dependency-management") version "1.1.4"
+}
+
 subprojects {
+    apply(plugin = "java")
+    apply(plugin = "maven-publish")
+    apply(plugin = "signing")
+    apply(plugin = "io.spring.dependency-management")
+
+    dependencyManagement {
+        imports {
+            mavenBom("org.springframework.boot:spring-boot-dependencies:3.5.0")
+            mavenBom("org.junit:junit-bom:5.12.2")
+        }
+    }
+
+
     repositories {
+        mavenLocal()
         mavenCentral()
     }
 
-    plugins.withId("java") {
-        extensions.getByType<JavaPluginExtension>().apply {
-            withSourcesJar()
-            withJavadocJar()
-        }
+    java {
+        toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+        withSourcesJar()
+        withJavadocJar()
+    }
+
+    tasks.test {
+        useJUnitPlatform()
     }
 
     plugins.withId("maven-publish") {
@@ -80,4 +104,9 @@ subprojects {
             }
         }
     }
+
+    //tasks.withType<Javadoc>().configureEach {
+    //    (options as StandardJavadocDocletOptions).addStringOption("Xdoclint:none", "-quiet")
+    //    isFailOnError = false
+    //}
 }

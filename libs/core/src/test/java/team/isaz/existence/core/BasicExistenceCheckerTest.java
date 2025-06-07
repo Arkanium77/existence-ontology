@@ -3,18 +3,21 @@ package team.isaz.existence.core;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import team.isaz.existence.core.model.constants.AbsenceInterpretationStrategies;
+import org.junit.jupiter.api.DisplayName;
 import team.isaz.existence.core.model.dto.CheckResult;
 import team.isaz.existence.core.model.interfaces.AbsenceInterpretationStrategy;
-import team.isaz.existence.core.model.interfaces.AbsenceRule;
 import team.isaz.existence.core.model.interfaces.ExistenceChecker;
+import team.isaz.existence.core.model.interfaces.InlineAbsenceRule;
+import team.isaz.existence.core.model.interfaces.ModifiableExistenceChecker;
 
 import java.util.Arrays;
 import java.util.Collections;
+@DisplayName("BasicExistenceChecker behavior")
 
 public class BasicExistenceCheckerTest {
-    private final MockAbsenceRule alwaysTrue = (a, b) -> true;
-    private final MockAbsenceRule alwaysFalse = (a, b) -> false;
-    private final MockAbsenceRule evenIsAbsent = (a, b) -> ((int) a) % 2 == 0;
+    private final InlineAbsenceRule alwaysTrue = (a, b) -> true;
+    private final InlineAbsenceRule alwaysFalse = (a, b) -> false;
+    private final InlineAbsenceRule evenIsAbsent = (a, b) -> ((int) a) % 2 == 0;
     private final AbsenceInterpretationStrategy throwAnyStrategy = r -> {
         throw new ResultHoldingException(r);
     };
@@ -211,7 +214,7 @@ public class BasicExistenceCheckerTest {
 
     @Test
     public void setup_whenSetupAlwaysTrueRule_thenResultOfAbsentIsTrue() {
-        ExistenceChecker checker = new BasicExistenceChecker(Collections.singleton(alwaysFalse));
+        ModifiableExistenceChecker checker = new BasicExistenceChecker(Collections.singleton(alwaysFalse));
         Assertions.assertThat(checker.absent(0)).isFalse();
         checker = checker.setup(Collections.singleton(alwaysTrue));
         Assertions.assertThat(checker.absent(0)).isTrue();
@@ -219,7 +222,7 @@ public class BasicExistenceCheckerTest {
 
     @Test
     public void copy_whenCopyExistenceChecker_thenCheckerNotEqualsButResultsAreTheSame() {
-        ExistenceChecker checker = new BasicExistenceChecker()
+        ModifiableExistenceChecker checker = new BasicExistenceChecker()
                 .strategy(throwAnyStrategy)
                 .registerAll(Arrays.asList(alwaysTrue, alwaysFalse, evenIsAbsent));
         ExistenceChecker anotherChecker = checker.copy();
@@ -249,14 +252,6 @@ public class BasicExistenceCheckerTest {
             result = e.getResult();
         }
         return result;
-    }
-
-    @FunctionalInterface
-    public interface MockAbsenceRule extends AbsenceRule {
-        @Override
-        default boolean applicable(Object o) {
-            return true;
-        }
     }
 
     private static class ResultHoldingException extends RuntimeException {

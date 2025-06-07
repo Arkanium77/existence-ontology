@@ -3,6 +3,13 @@ subprojects {
         mavenCentral()
     }
 
+    plugins.withId("java") {
+        extensions.getByType<JavaPluginExtension>().apply {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+
     plugins.withId("maven-publish") {
         val ossrhUsername: String? = System.getenv("OSSRH_USERNAME")
         val ossrhPassword: String? = System.getenv("OSSRH_PASSWORD")
@@ -50,7 +57,7 @@ subprojects {
                 }
             }
 
-            tasks.matching { it.name.startsWith("publish") }.configureEach {
+            tasks.matching { it.name.startsWith("publish") && !it.name.contains("MavenLocal") }.configureEach {
                 doFirst {
                     require(!ossrhUsername.isNullOrBlank()) { "OSSRH_USERNAME not set" }
                     require(!ossrhPassword.isNullOrBlank()) { "OSSRH_PASSWORD not set" }

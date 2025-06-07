@@ -10,6 +10,13 @@ description = "Existence Ontology core utilities"
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+    withSourcesJar()
+    withJavadocJar()
+}
+
+tasks.withType<Javadoc>().configureEach {
+    (options as? StandardJavadocDocletOptions)?.addStringOption("Xdoclint:none", "-quiet")
+    isFailOnError = false
 }
 
 tasks.withType<JavaCompile>().configureEach {

@@ -36,7 +36,7 @@ public interface AbsenceRule {
     /**
      * <p>Checking that a rule can be applied to an incoming object</p>
      * <p>
-     * In most cases it is a type check. For example, the rule "if a number is greater than zero, it exists"
+     * In most cases, it is a type check. For example, the rule "if a number is greater than zero, it exists"
      * can be applied only to {@link Number}, but not to {@link String}.
      * </p>
      * <p>However, it is possible to set more complex conditions, depending on business requirements</p>
@@ -48,7 +48,7 @@ public interface AbsenceRule {
     boolean applicable(Object o);
 
     /**
-     * <p>Checking that incoming object are absent</p>
+     * <p>Checking that incoming object is absent</p>
      * <p>
      * Absence checking can rely on a wide variety of criteria. The simplest way is not to implement a rule,
      * but to implement the {@link Emptyable} interface and use an existing class

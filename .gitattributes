@@ -1,0 +1,67 @@
+# === Основное поведение ===
+* text=auto eol=lf
+
+# Исключения — скрипты под Windows
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Git-системные файлы
+.gitattributes text eol=lf
+.gitignore    text eol=lf
+
+# === Java/Kotlin/Groovy/Scala ===
+*.java     diff=java
+*.kt       diff
+*.kts      diff
+*.groovy   diff
+*.scala    diff
+
+# === Python ===
+*.py       diff=python
+*.pyi      diff=python
+*.pyx      diff
+*.ipynb    diff
+*.ini      diff
+*.cfg      diff
+*.pylintrc diff
+
+# === Конфигурации и сборка ===
+*.gradle     diff
+*.properties diff
+*.xml        diff=xml
+*.yml        diff
+*.yaml       diff
+*.json       diff
+*.toml       diff
+*.env        diff
+
+# === Скрипты и SQL ===
+*.sh       text eol=lf diff
+*.sql      diff
+
+# === Документация ===
+*.md       text eol=lf diff
+*.txt      text eol=lf diff
+*.adoc     text eol=lf diff
+
+# === Бинарные и архивы ===
+*.jar      binary
+*.war      binary
+*.ear      binary
+*.class    binary
+*.pyc      binary
+*.pyo      binary
+*.pyd      binary
+*.png      binary
+*.jpg      binary
+*.jpeg     binary
+*.gif      binary
+*.ico      binary
+*.pdf      binary
+*.zip      binary
+*.tar      binary
+*.gz       binary
+*.7z       binary
+*.woff     binary
+*.woff2    binary
+*.ttf      binary

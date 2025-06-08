@@ -1,6 +1,9 @@
 # Existence Ontology: решение "экзистенциальных" вопросов
 **[English version](readme.md)**
 
+[![core version](https://img.shields.io/maven-central/v/team.isaz.existence/core?label=core)](https://central.sonatype.com/artifact/team.isaz.existence/core)
+[![starter version](https://img.shields.io/maven-central/v/team.isaz.existence/starter?label=starter)](https://central.sonatype.com/artifact/team.isaz.existence/starter)
+
 ## О проекте
 
 Порой, я смотрю в код и думаю: а существует ли этот объект? И что вообще значит

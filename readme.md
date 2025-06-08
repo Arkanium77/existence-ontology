@@ -2,6 +2,9 @@
 
 **[Русская версия](readme.ru.md)**
 
+[![core version](https://img.shields.io/maven-central/v/team.isaz.existence/core?label=core)](https://central.sonatype.com/artifact/team.isaz.existence/core)
+[![starter version](https://img.shields.io/maven-central/v/team.isaz.existence/starter?label=starter)](https://central.sonatype.com/artifact/team.isaz.existence/starter)
+
 ## About the project
 
 Sometimes I look at the code and wonder: does this object even exist? And what does it mean for it to "exist"? If a variable is `null`, its value is meaningless. If it's an `Optional`, you can ask `o.isPresent()` and get an answer. But what if inside that `Optional` there is yet another `Optional`? What about a string that contains only spaces? The method `"     ".isEmpty()` thinks it is not empty, but there's zero useful information in it! The same happens with many business objects that can be "empty" when required fields in a form are left blank.

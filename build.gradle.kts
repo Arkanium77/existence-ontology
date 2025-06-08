@@ -1,15 +1,17 @@
 plugins {
     id("java")
-    id("maven-publish")
     id("signing")
+    id("maven-publish")
     id("io.spring.dependency-management") version "1.1.4"
+    id ("tech.yanand.maven-central-publish") version "1.3.0"
 }
 
 subprojects {
     apply(plugin = "java")
-    apply(plugin = "maven-publish")
     apply(plugin = "signing")
+    apply(plugin = "maven-publish")
     apply(plugin = "io.spring.dependency-management")
+    apply(plugin = "tech.yanand.maven-central-publish")
 
     dependencyManagement {
         imports {
@@ -33,11 +35,9 @@ subprojects {
         useJUnitPlatform()
     }
 
-    val ossrhUsername: String? = System.getenv("OSSRH_USERNAME")
-    val ossrhPassword: String? = System.getenv("OSSRH_PASSWORD")
-    val signingKey: String? = System.getenv("GPG_PRIVATE_KEY")
+    val signingKeyPath = System.getenv("GPG_KEY_FILE")
     val signingPassword: String? = System.getenv("GPG_PASSWORD")
-
+    val sonatypeToken: String? = System.getenv("SONATYPE_TOKEN")
     afterEvaluate {
         extensions.findByType(PublishingExtension::class.java)?.apply {
             publications {
@@ -69,36 +69,25 @@ subprojects {
                     }
                 }
             }
-
-            if (!ossrhUsername.isNullOrBlank() && !ossrhPassword.isNullOrBlank()) {
-                repositories {
-                    maven {
-                        name = "Sonatype"
-                        url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-                        credentials {
-                            username = ossrhUsername
-                            password = ossrhPassword
-                        }
-                    }
-                }
-            }
         }
 
-        extensions.findByType(SigningExtension::class.java)?.apply {
-            isRequired = gradle.taskGraph.hasTask("publish")
-            if (!signingKey.isNullOrBlank() && !signingPassword.isNullOrBlank()) {
-                useInMemoryPgpKeys(signingKey, signingPassword)
-                sign(extensions.getByType<PublishingExtension>().publications["mavenJava"])
+        // 2. Настройка signing после публикации
+        extensions.findByType<SigningExtension>()?.apply {
+            isRequired = gradle.taskGraph.hasTask("publish") || gradle.taskGraph.hasTask("jreleaserFullRelease")
+            if (!signingKeyPath.isNullOrBlank() && !signingPassword.isNullOrBlank()) {
+                val key = file(signingKeyPath).readText()
+                useInMemoryPgpKeys(key, signingPassword)
+                sign(publishing.publications["mavenJava"])
             } else {
-                logger.lifecycle("Skipping signing: GPG_PRIVATE_KEY or GPG_PASSWORD not set")
+                logger.warn("GPG_PRIVATE_KEY or GPG_PASSWORD not set, skipping signing")
             }
         }
 
-        tasks.matching { it.name.startsWith("publish") && !it.name.contains("MavenLocal") }.configureEach {
-            doFirst {
-                require(!ossrhUsername.isNullOrBlank()) { "OSSRH_USERNAME not set" }
-                require(!ossrhPassword.isNullOrBlank()) { "OSSRH_PASSWORD not set" }
-            }
+        // 3. Настройка публикации в Maven Central
+        extensions.findByName("mavenCentral")?.let { ext ->
+            (ext as groovy.lang.GroovyObject).setProperty("authToken", sonatypeToken)
+            ext.setProperty("publishingType", "USER_MANAGED")
+            ext.setProperty("maxWait", 60)
         }
     }
 }

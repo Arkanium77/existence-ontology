@@ -5,6 +5,7 @@
 .idea
 .idea/**
 *.iml
+.secret
 
 # CMake
 cmake-build-*/

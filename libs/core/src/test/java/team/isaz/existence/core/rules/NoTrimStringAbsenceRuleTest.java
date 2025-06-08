@@ -3,7 +3,9 @@ package team.isaz.existence.core.rules;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import team.isaz.existence.core.model.interfaces.AbsenceRule;
+import org.junit.jupiter.api.DisplayName;
 import team.isaz.existence.core.model.rules.NoTrimStringAbsenceRule;
+@DisplayName("NoTrim string absence rule")
 
 public class NoTrimStringAbsenceRuleTest {
     private final AbsenceRule rule = new NoTrimStringAbsenceRule();

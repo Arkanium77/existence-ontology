@@ -8,6 +8,7 @@ import team.isaz.existence.core.model.dto.CheckResult;
  * This interface defines a contract for classes that describe strategies for interpretation results of absence check.
  * </p>
  */
+@FunctionalInterface
 public interface AbsenceInterpretationStrategy {
 
     /**

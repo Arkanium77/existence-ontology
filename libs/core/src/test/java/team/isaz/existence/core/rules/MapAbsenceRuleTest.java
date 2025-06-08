@@ -3,6 +3,7 @@ package team.isaz.existence.core.rules;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
+import org.junit.jupiter.api.DisplayName;
 import org.mockito.Mockito;
 import team.isaz.existence.core.model.interfaces.AbsenceRule;
 import team.isaz.existence.core.model.interfaces.ExistenceChecker;
@@ -11,6 +12,7 @@ import team.isaz.existence.core.model.rules.MapAbsenceRule;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+@DisplayName("Map absence rule")
 
 public class MapAbsenceRuleTest {
     private final AbsenceRule rule = new MapAbsenceRule();

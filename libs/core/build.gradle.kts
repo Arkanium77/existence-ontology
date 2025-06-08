@@ -1,21 +1,17 @@
-plugins {
-    java
-}
-
 group = "team.isaz.existence"
-version = "1.0-SNAPSHOT"
+version = "1.0.0"
+description = "Existence Ontology core utilities"
 
-repositories {
-    mavenCentral()
+tasks.withType<JavaCompile>().configureEach {
+    options.release.set(8)
+    options.compilerArgs.add("-Xlint:-options")
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
-    testImplementation("org.assertj:assertj-core:3.24.2")
-    testImplementation("org.mockito:mockito-core:4.11.0")
-}
-
-tasks.test {
-    useJUnitPlatform()
+    // testImplementation("org.assertj:assertj-core:3.27.3")
+    // testImplementation("org.mockito:mockito-core:5.18.0")
+    testImplementation("org.assertj:assertj-core")
+    testImplementation("org.mockito:mockito-core")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }

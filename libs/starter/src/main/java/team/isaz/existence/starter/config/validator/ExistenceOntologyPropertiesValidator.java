@@ -8,16 +8,19 @@ import team.isaz.existence.core.model.interfaces.AbsenceInterpretationStrategy;
 import team.isaz.existence.core.model.interfaces.AbsenceRule;
 import team.isaz.existence.starter.properties.ExistenceOntologyProperties;
 
-@Component
-@RequiredArgsConstructor
 /**
  * Validates that configured bean names exist in the context.
  */
+@Component
+@RequiredArgsConstructor
 public class ExistenceOntologyPropertiesValidator implements SmartInitializingSingleton {
 
     private final ExistenceOntologyProperties props;
     private final ApplicationContext ctx;
 
+    /**
+     * Ensure that beans referenced in properties are present.
+     */
     @Override
     public void afterSingletonsInstantiated() {
         var ruleNames = ctx.getBeansOfType(AbsenceRule.class).keySet();

@@ -7,11 +7,17 @@ import team.isaz.existence.core.model.interfaces.ExistenceChecker;
  * Considers a string with only whitespace characters as absent.
  */
 public class StringAbsenceRule implements AbsenceRule {
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean applicable(Object o) {
         return o instanceof String;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean absent(Object o, ExistenceChecker checker) {
         return ((String) o).trim().isEmpty();

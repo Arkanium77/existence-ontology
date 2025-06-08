@@ -19,18 +19,21 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * ExistenceChecker that uses configured beans for rules and strategy.
+ */
 @Component
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder(toBuilder = true)
 @ConditionalOnMissingBean(ExistenceChecker.class)
-/**
- * ExistenceChecker that uses configured beans for rules and strategy.
- */
 public class BeanBasedExistenceChecker implements ExistenceChecker {
 
     private final List<AbsenceRule> rules;
     private final AbsenceInterpretationStrategy strategy;
 
+    /**
+     * Constructs the checker using beans from the Spring context.
+     */
     @Autowired
     public BeanBasedExistenceChecker(
             Map<String, AbsenceRule> ruleBeans,
@@ -47,6 +50,9 @@ public class BeanBasedExistenceChecker implements ExistenceChecker {
                 .orElseThrow(() -> new IllegalArgumentException("Unknown strategy: " + props.getStrategy()));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean absent(Object o) {
         var result = rules.stream()

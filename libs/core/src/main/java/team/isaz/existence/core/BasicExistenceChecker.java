@@ -21,26 +21,47 @@ public class BasicExistenceChecker implements ModifiableExistenceChecker {
     private final Queue<AbsenceRule> rules;
     private AbsenceInterpretationStrategy strategy;
 
+    /**
+     * Creates an empty checker using the {@code ANY_EXISTS} interpretation strategy.
+     */
     public BasicExistenceChecker() {
         rules = new ConcurrentLinkedQueue<>();
         strategy = AbsenceInterpretationStrategies.ANY_EXISTS;
     }
 
+    /**
+     * Creates a checker with the provided rules and the default
+     * {@code ANY_EXISTS} interpretation strategy.
+     *
+     * @param rules rules to register
+     */
     public BasicExistenceChecker(Collection<AbsenceRule> rules) {
         this.rules = new ConcurrentLinkedQueue<>(rules);
         strategy = AbsenceInterpretationStrategies.ANY_EXISTS;
     }
 
+    /**
+     * Creates a checker with the provided rules and strategy.
+     *
+     * @param rules     rules to register
+     * @param strategy  strategy used to interpret results
+     */
     public BasicExistenceChecker(Collection<AbsenceRule> rules, AbsenceInterpretationStrategy strategy) {
         this.rules = new ConcurrentLinkedQueue<>(rules);
         this.strategy = strategy;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ModifiableExistenceChecker copy() {
         return new BasicExistenceChecker(this.rules, this.strategy);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ModifiableExistenceChecker strategy(AbsenceInterpretationStrategy strategy) {
         if (strategy == null) {
@@ -50,18 +71,27 @@ public class BasicExistenceChecker implements ModifiableExistenceChecker {
         return this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ModifiableExistenceChecker register(AbsenceRule rule) {
         rules.add(rule);
         return this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ModifiableExistenceChecker registerAll(Collection<AbsenceRule> rules) {
         this.rules.addAll(rules);
         return this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ModifiableExistenceChecker setup(Collection<AbsenceRule> rules) {
         if (rules == null) {
@@ -72,6 +102,9 @@ public class BasicExistenceChecker implements ModifiableExistenceChecker {
         return this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean absent(Object o) {
         CheckResult result = rules

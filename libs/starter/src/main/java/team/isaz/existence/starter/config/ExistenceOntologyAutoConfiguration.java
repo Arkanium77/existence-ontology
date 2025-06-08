@@ -10,6 +10,9 @@ import team.isaz.existence.starter.config.factory.YamlPropertySourceFactory;
 import team.isaz.existence.starter.config.validator.ExistenceOntologyPropertiesValidator;
 import team.isaz.existence.starter.properties.ExistenceOntologyProperties;
 
+/**
+ * Spring Boot auto configuration for Existence Ontology.
+ */
 @Configuration
 @RequiredArgsConstructor
 @PropertySource(
@@ -26,9 +29,6 @@ import team.isaz.existence.starter.properties.ExistenceOntologyProperties;
         }
 )
 @EnableConfigurationProperties(ExistenceOntologyProperties.class)
-/**
- * Spring Boot auto configuration for Existence Ontology.
- */
 public class ExistenceOntologyAutoConfiguration {
 
 }

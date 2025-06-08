@@ -15,6 +15,9 @@ import java.util.Objects;
  */
 public class YamlPropertySourceFactory implements PropertySourceFactory {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public @NonNull PropertySource<?> createPropertySource(@Nullable String name, EncodedResource encodedResource) {
         var factory = new YamlPropertiesFactoryBean();

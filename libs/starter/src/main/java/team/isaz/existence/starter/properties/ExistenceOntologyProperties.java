@@ -8,12 +8,12 @@ import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
-@Data
-@Validated
-@ConfigurationProperties("existence-ontology")
 /**
  * Configuration properties for Existence Ontology starter.
  */
+@Data
+@Validated
+@ConfigurationProperties("existence-ontology")
 public class ExistenceOntologyProperties {
     @NotBlank
     private String strategy;

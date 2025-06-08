@@ -7,19 +7,25 @@ import org.springframework.stereotype.Component;
 import team.isaz.existence.core.model.constants.AbsenceInterpretationStrategies;
 import team.isaz.existence.core.model.interfaces.AbsenceInterpretationStrategy;
 
-@Component
-@Configuration
 /**
  * Provides default {@link AbsenceInterpretationStrategy} beans.
  */
+@Component
+@Configuration
 public class BasicAbsenceInterpretationStrategyBeans {
 
+    /**
+     * Bean for {@code ANY_EXISTS} interpretation strategy.
+     */
     @Bean
     @ConditionalOnMissingBean(name = "anyExistsAbsenceInterpretationStrategy")
     public AbsenceInterpretationStrategy anyExistsAbsenceInterpretationStrategy() {
         return AbsenceInterpretationStrategies.ANY_EXISTS;
     }
 
+    /**
+     * Bean for {@code ANY_ABSENT} interpretation strategy.
+     */
     @Bean
     @ConditionalOnMissingBean(name = "anyAbsentAbsenceInterpretationStrategy")
     public AbsenceInterpretationStrategy anyAbsentAbsenceInterpretationStrategy() {

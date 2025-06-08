@@ -7,11 +7,17 @@ import team.isaz.existence.core.model.interfaces.ExistenceChecker;
  * Treats {@code null} values as absent.
  */
 public class NullAbsenceRule implements AbsenceRule {
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean applicable(Object o) {
         return o == null;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean absent(Object o, ExistenceChecker checker) {
         return o == null;

@@ -9,11 +9,17 @@ import java.util.Collection;
  * Checks collections and their elements for absence.
  */
 public class CollectionAbsenceRule implements AbsenceRule {
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean applicable(Object o) {
         return o instanceof Collection;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean absent(Object o, ExistenceChecker checker) {
         Collection<?> collection = (Collection<?>) o;

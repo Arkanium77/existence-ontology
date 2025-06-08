@@ -3,10 +3,10 @@ package team.isaz.existence.starter.utils;
 import lombok.experimental.UtilityClass;
 import team.isaz.existence.starter.config.StaticBeans;
 
-@UtilityClass
 /**
  * Static facade for the configured {@link team.isaz.existence.core.model.interfaces.ExistenceChecker}.
  */
+@UtilityClass
 public class ExistenceUtils {
 
     /**

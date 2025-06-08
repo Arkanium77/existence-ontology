@@ -5,6 +5,9 @@ import team.isaz.existence.core.model.interfaces.ExistenceChecker;
 
 import java.util.Optional;
 
+/**
+ * Handles {@link Optional} values and delegates to nested objects.
+ */
 public class OptionalAbsenceRule implements AbsenceRule {
     @Override
     public boolean applicable(Object o) {

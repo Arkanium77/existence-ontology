@@ -7,6 +7,9 @@ import team.isaz.existence.core.model.interfaces.ExistenceChecker;
 
 @Component
 @RequiredArgsConstructor
+/**
+ * Provides access to beans after initialization.
+ */
 public class StaticBeans implements InitializingBean {
 
     private final ExistenceChecker existenceChecker;

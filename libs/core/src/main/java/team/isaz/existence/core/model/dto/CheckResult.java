@@ -2,6 +2,9 @@ package team.isaz.existence.core.model.dto;
 
 import java.util.Map;
 
+/**
+ * Holds the amount of positive and negative rule results.
+ */
 public class CheckResult {
     private final long absentResults;
     private final long existsResults;

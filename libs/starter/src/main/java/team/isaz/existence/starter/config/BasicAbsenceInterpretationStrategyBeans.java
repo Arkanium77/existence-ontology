@@ -9,6 +9,9 @@ import team.isaz.existence.core.model.interfaces.AbsenceInterpretationStrategy;
 
 @Component
 @Configuration
+/**
+ * Provides default {@link AbsenceInterpretationStrategy} beans.
+ */
 public class BasicAbsenceInterpretationStrategyBeans {
 
     @Bean

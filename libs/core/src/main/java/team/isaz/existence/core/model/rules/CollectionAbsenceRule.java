@@ -5,6 +5,9 @@ import team.isaz.existence.core.model.interfaces.ExistenceChecker;
 
 import java.util.Collection;
 
+/**
+ * Checks collections and their elements for absence.
+ */
 public class CollectionAbsenceRule implements AbsenceRule {
     @Override
     public boolean applicable(Object o) {

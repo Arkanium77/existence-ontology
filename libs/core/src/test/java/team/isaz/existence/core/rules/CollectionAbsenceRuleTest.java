@@ -3,6 +3,7 @@ package team.isaz.existence.core.rules;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
+import org.junit.jupiter.api.DisplayName;
 import org.mockito.Mockito;
 import team.isaz.existence.core.model.interfaces.AbsenceRule;
 import team.isaz.existence.core.model.interfaces.ExistenceChecker;
@@ -10,6 +11,7 @@ import team.isaz.existence.core.model.rules.CollectionAbsenceRule;
 
 import java.util.Arrays;
 import java.util.Collections;
+@DisplayName("Collection absence rule")
 
 public class CollectionAbsenceRuleTest {
     private final AbsenceRule rule = new CollectionAbsenceRule();

@@ -26,6 +26,9 @@ import team.isaz.existence.starter.properties.ExistenceOntologyProperties;
         }
 )
 @EnableConfigurationProperties(ExistenceOntologyProperties.class)
+/**
+ * Spring Boot auto configuration for Existence Ontology.
+ */
 public class ExistenceOntologyAutoConfiguration {
 
 }

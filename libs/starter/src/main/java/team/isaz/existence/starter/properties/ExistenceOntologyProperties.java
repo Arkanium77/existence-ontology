@@ -11,6 +11,9 @@ import java.util.List;
 @Data
 @Validated
 @ConfigurationProperties("existence-ontology")
+/**
+ * Configuration properties for Existence Ontology starter.
+ */
 public class ExistenceOntologyProperties {
     @NotBlank
     private String strategy;

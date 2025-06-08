@@ -10,6 +10,9 @@ import team.isaz.existence.starter.properties.ExistenceOntologyProperties;
 
 @Component
 @RequiredArgsConstructor
+/**
+ * Validates that configured bean names exist in the context.
+ */
 public class ExistenceOntologyPropertiesValidator implements SmartInitializingSingleton {
 
     private final ExistenceOntologyProperties props;

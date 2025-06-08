@@ -3,7 +3,9 @@ package team.isaz.existence.core.rules;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import team.isaz.existence.core.model.interfaces.AbsenceRule;
+import org.junit.jupiter.api.DisplayName;
 import team.isaz.existence.core.model.rules.StringAbsenceRule;
+@DisplayName("String absence rule")
 
 public class StringAbsenceRuleTest {
     private final AbsenceRule rule = new StringAbsenceRule();

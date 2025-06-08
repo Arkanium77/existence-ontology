@@ -23,6 +23,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder(toBuilder = true)
 @ConditionalOnMissingBean(ExistenceChecker.class)
+/**
+ * ExistenceChecker that uses configured beans for rules and strategy.
+ */
 public class BeanBasedExistenceChecker implements ExistenceChecker {
 
     private final List<AbsenceRule> rules;

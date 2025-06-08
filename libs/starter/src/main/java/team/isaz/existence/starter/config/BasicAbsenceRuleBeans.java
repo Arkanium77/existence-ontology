@@ -15,6 +15,9 @@ import team.isaz.existence.core.model.rules.StringAbsenceRule;
 
 @Component
 @Configuration
+/**
+ * Registers default {@link AbsenceRule} beans.
+ */
 public class BasicAbsenceRuleBeans {
 
     @Bean

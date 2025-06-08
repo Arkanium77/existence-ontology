@@ -3,6 +3,9 @@ package team.isaz.existence.core.model.rules;
 import team.isaz.existence.core.model.interfaces.AbsenceRule;
 import team.isaz.existence.core.model.interfaces.ExistenceChecker;
 
+/**
+ * Treats {@code null} values as absent.
+ */
 public class NullAbsenceRule implements AbsenceRule {
     @Override
     public boolean applicable(Object o) {

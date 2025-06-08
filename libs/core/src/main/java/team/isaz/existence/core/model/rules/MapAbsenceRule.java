@@ -5,6 +5,9 @@ import team.isaz.existence.core.model.interfaces.ExistenceChecker;
 
 import java.util.Map;
 
+/**
+ * Considers a map absent if it is empty or all values are absent.
+ */
 public class MapAbsenceRule implements AbsenceRule {
     @Override
     public boolean applicable(Object o) {

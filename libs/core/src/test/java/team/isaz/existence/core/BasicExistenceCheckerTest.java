@@ -3,6 +3,7 @@ package team.isaz.existence.core;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import team.isaz.existence.core.model.constants.AbsenceInterpretationStrategies;
+import org.junit.jupiter.api.DisplayName;
 import team.isaz.existence.core.model.dto.CheckResult;
 import team.isaz.existence.core.model.interfaces.AbsenceInterpretationStrategy;
 import team.isaz.existence.core.model.interfaces.ExistenceChecker;
@@ -11,6 +12,7 @@ import team.isaz.existence.core.model.interfaces.ModifiableExistenceChecker;
 
 import java.util.Arrays;
 import java.util.Collections;
+@DisplayName("BasicExistenceChecker behavior")
 
 public class BasicExistenceCheckerTest {
     private final InlineAbsenceRule alwaysTrue = (a, b) -> true;

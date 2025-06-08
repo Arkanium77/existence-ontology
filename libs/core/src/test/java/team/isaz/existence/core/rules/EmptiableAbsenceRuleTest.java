@@ -3,8 +3,10 @@ package team.isaz.existence.core.rules;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import team.isaz.existence.core.model.interfaces.AbsenceRule;
+import org.junit.jupiter.api.DisplayName;
 import team.isaz.existence.core.model.interfaces.Emptiable;
 import team.isaz.existence.core.model.rules.EmptiableAbsenceRule;
+@DisplayName("Emptiable absence rule")
 
 public class EmptiableAbsenceRuleTest {
     private final AbsenceRule rule = new EmptiableAbsenceRule();

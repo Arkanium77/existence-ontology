@@ -4,6 +4,9 @@ import team.isaz.existence.core.model.interfaces.AbsenceRule;
 import team.isaz.existence.core.model.interfaces.Emptiable;
 import team.isaz.existence.core.model.interfaces.ExistenceChecker;
 
+/**
+ * Uses {@link Emptiable#empty()} to determine absence.
+ */
 public class EmptiableAbsenceRule implements AbsenceRule {
     @Override
     public boolean applicable(Object o) {

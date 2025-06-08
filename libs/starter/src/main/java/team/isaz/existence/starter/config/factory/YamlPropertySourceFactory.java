@@ -10,6 +10,9 @@ import org.springframework.lang.Nullable;
 
 import java.util.Objects;
 
+/**
+ * Loads YAML files as Spring property sources.
+ */
 public class YamlPropertySourceFactory implements PropertySourceFactory {
 
     @Override
